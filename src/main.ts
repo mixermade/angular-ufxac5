@@ -2,6 +2,9 @@ import 'zone.js/dist/zone';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { bootstrapApplication } from '@angular/platform-browser';
+import { platformBrowser } from '@angular/platform-browser';
+import { FlowerListComponent } from './flower-list/flower-list.component';
+import { FlowerListModule } from './flower-list/flower-list.module';
 
 @Component({
   selector: 'my-app',
@@ -19,3 +22,4 @@ export class App {
 }
 
 bootstrapApplication(App);
+bootstrapApplication(FlowerListComponent);

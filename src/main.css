@@ -1,0 +1,17 @@
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:calc(100% - 82%);
+  background-color: whitesmoke;
+  border-radius: 20px;
+  width: 50%;
+  padding-bottom: 40px;
+  padding-top: 30px;
+}
+.pad{
+  padding-bottom: 10px;
+}
+.text{
+  font: italic 1.2em "Fira Sans", serif;
+}
