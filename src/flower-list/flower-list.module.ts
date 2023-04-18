@@ -6,7 +6,7 @@ import { FlowerListComponent } from './flower-list.component'
 
 @NgModule({
     imports:      [ BrowserModule, FormsModule ],
-    declarations: [  ],
+    declarations: [ ],
     bootstrap:    [ ]
 })
 export class FlowerListModule { }

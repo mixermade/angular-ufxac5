@@ -26,10 +26,10 @@ class Flower{
   <div class="container text-center">
       <p class="text">Input flower data</p>
       <div class="row row-cols-2">
-          <div class="col pad"><input type="text" class="form-control" [(ngModel)]="name" placeholder="Name" aria-label="Name" required></div>
-          <div class="col"><input type="text" class="form-control" [(ngModel)]="latname" placeholder="Latin name" aria-label="Latin name" required></div>
-          <div class="col pad"><input type="text" class="form-control" [(ngModel)]="formula" placeholder="Floral formula" aria-label="Floral formula" required></div>
-          <div class="col"><select class="form-select" [(ngModel)]="poison" aria-label="Default select example" required>
+          <div class="col pad"><input type="text" class="form-control" [(ngModel)]="name" name="name" placeholder="Name" aria-label="Name" required></div>
+          <div class="col"><input type="text" class="form-control" [(ngModel)]="latname" name="latname" placeholder="Latin name" aria-label="Latin name" required></div>
+          <div class="col pad"><input type="text" class="form-control" [(ngModel)]="formula" name="formula" placeholder="Floral formula" aria-label="Floral formula" required></div>
+          <div class="col"><select class="form-select" [(ngModel)]="poison" name="poison" aria-label="Default select example" required>
           <option value="" disabled selected>Poisonous?</option>
           <option value="Yes">Yes</option>
           <option value="No">No</option></select>
@@ -37,7 +37,7 @@ class Flower{
       </div>
       <div class="row row-cols-2">
           <div class="col"><button type="button" (click)="addFlower(name, latname, formula, poison)" class="btn btn-dark" style="width:50%; margin-top: 14px">Submit</button></div>
-          <div class="col"><button type="button" class="btn btn-danger" style="width:50%; margin-top: 14px">Flush</button></div>
+          <div class="col"><button type="button" (click)="flushList()" class="btn btn-danger" style="width:50%; margin-top: 14px">Flush</button></div>
       </div>
       
   </div>
@@ -59,7 +59,13 @@ export class FlowerListComponent {
   [
   ];
   addFlower(name: string, latname: string, formula: string, poison: string): void {     
-      this.flowers.push(new Flower(name, latname, formula, poison));
+      if(name && latname && formula && poison){
+        this.flowers.push(new Flower(name, latname, formula, poison));
+      }  
 }
-
+  flushList() : void{
+    while(this.flowers.length != 0){
+      this.flowers.pop();
+    }
+  }
 }
