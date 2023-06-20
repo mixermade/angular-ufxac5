@@ -35,7 +35,7 @@ class Flower{
   See more
 </button>
 <button style="margin-left:10px" type="button" class="btn btn-dark" (click)="addToFavs(flower)">
-  Add to favorites
+  Add to favourites
 </button>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
@@ -96,7 +96,7 @@ class Flower{
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingTwo">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Favorites
+        Favourites
       </button>
     </h2>
     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
