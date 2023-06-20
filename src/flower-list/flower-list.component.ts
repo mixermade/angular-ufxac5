@@ -7,6 +7,7 @@ class Flower{
   latname: string;
   formula: string;
   poison: string;
+  selected?: boolean;
    
   constructor(name: string, latname: string, formula: string, poison: string) {
 
@@ -22,7 +23,32 @@ class Flower{
   standalone: true,
   imports: [CommonModule,
     FormsModule],
-  template: `<form name="floralForm">
+  template: `<form (submit)="searchInArray(request.value)">
+  <input #request type="text" class="form-control" name="searchValue" placeholder="Is this poisonous?" aria-label="Name" required>
+  <button type="submit" class="btn btn-dark">Search</button>
+</form>
+<p><ul *ngFor="let flower of flowers">
+  <li *ngIf="flower.selected">{{flower.poison}} <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button><div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+     <p>{{flower.name}} | {{flower.latname}} | {{flower.formula}}</p>
+    </div>
+    <div class="modal-footer">
+    </div>
+  </div>
+</div>
+</div></li>
+  </ul>
+
+  
+  <form name="floralForm">
   <div class="container text-center">
       <p class="text">Input flower data</p>
       <div class="row row-cols-2">
@@ -48,9 +74,11 @@ class Flower{
       </ul>
       </div>
 </form>
+
   `
 })
 export class FlowerListComponent {
+  searchValue: string = "";
   name: string = "";
   latname: string = "";
   formula: string = "";
@@ -68,4 +96,12 @@ export class FlowerListComponent {
       this.flowers.pop();
     }
   }
+  searchInArray(searchValue: string) {
+    for (let flower of this.flowers) {
+      flower.selected = false;
+       if (flower.name === searchValue) {
+          flower.selected = true;
+       }
+    }
+}
 }
