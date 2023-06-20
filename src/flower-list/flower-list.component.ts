@@ -8,6 +8,7 @@ class Flower{
   formula: string;
   poison: string;
   selected?: boolean;
+  favourite?: boolean;
    
   constructor(name: string, latname: string, formula: string, poison: string) {
 
@@ -24,12 +25,14 @@ class Flower{
   imports: [CommonModule,
     FormsModule],
   template: `<form (submit)="searchInArray(request.value)">
-  <input #request type="text" class="form-control" name="searchValue" placeholder="Is this poisonous?" aria-label="Name" required>
-  <button type="submit" class="btn btn-dark">Search</button>
+  <div style="margin-top:10%" class="input-group mb-3">
+  <input #request type="text" class="form-control" placeholder="Is this poisonous?" aria-label="Recipient's username" aria-describedby="button-addon2">
+  <button class="btn btn-dark" type="submit" id="button-addon2">Search</button>
+</div>
 </form>
 <p><ul *ngFor="let flower of flowers">
   <li *ngIf="flower.selected">{{flower.poison}} <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
+  See more
 </button><div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
@@ -39,8 +42,6 @@ class Flower{
     </div>
     <div class="modal-body">
      <p>{{flower.name}} | {{flower.latname}} | {{flower.formula}}</p>
-    </div>
-    <div class="modal-footer">
     </div>
   </div>
 </div>
