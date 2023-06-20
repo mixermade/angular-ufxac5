@@ -31,25 +31,39 @@ class Flower{
 </div>
 </form>
 <p><ul *ngFor="let flower of flowers">
-  <li *ngIf="flower.selected">{{flower.poison}} <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <li *ngIf="flower.selected">{{flower.poison}} <button style="margin-left:10px" type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
   See more
-</button><div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</button>
+<button style="margin-left:10px" type="button" class="btn btn-dark" (click)="addToFavs(flower)">
+  Add to favorites
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+      <h5 class="modal-title" id="exampleModalLabel">{{flower.name}}</h5>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-     <p>{{flower.name}} | {{flower.latname}} | {{flower.formula}}</p>
+     <p> {{flower.name}}  
+     <p> Latin name: {{flower.latname}}
+     <p> Floral formula: {{flower.formula}}</p>
     </div>
   </div>
 </div>
 </div></li>
   </ul>
 
-  
-  <form name="floralForm">
+  <div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Input flower data
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+            <form name="floralForm">
   <div class="container text-center">
       <p class="text">Input flower data</p>
       <div class="row row-cols-2">
@@ -76,6 +90,24 @@ class Flower{
       </div>
 </form>
 
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Favorites
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+      <ul *ngFor="let flower of flowers">
+      <li *ngIf="flower.favourite">{{flower.name}} | {{flower.latname}} | {{flower.formula}} | Poisonous?: {{flower.poison}}</li>
+      </ul>
+      </div>
+    </div>
+  </div>
+</div>
   `
 })
 export class FlowerListComponent {
@@ -105,4 +137,7 @@ export class FlowerListComponent {
        }
     }
 }
+  addToFavs(flower){
+    flower.favourite = true;
+  }
 }
