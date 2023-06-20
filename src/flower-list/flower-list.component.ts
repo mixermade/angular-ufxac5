@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule }   from '@angular/forms';
+import {FunFactComponent} from './fun-fact/fun-fact.component';
 
 class Flower{
   name: string;
@@ -108,6 +109,7 @@ class Flower{
     </div>
   </div>
 </div>
+<app-fun-fact></app-fun-fact>
   `
 })
 export class FlowerListComponent {
