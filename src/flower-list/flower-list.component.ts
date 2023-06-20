@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule }   from '@angular/forms';
-import { FunFactComponent } from 'src/fun-fact/fun-fact.component';
 
 
 class Flower{
@@ -25,7 +24,7 @@ class Flower{
   selector: 'app-flower-list',
   standalone: true,
   imports: [CommonModule,
-    FormsModule, FunFactComponent],
+    FormsModule,],
   template: `<form (submit)="searchInArray(request.value)">
   <div style="margin-top:10%" class="input-group mb-3">
   <input #request type="text" class="form-control" placeholder="Is this poisonous?" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -110,7 +109,6 @@ class Flower{
     </div>
   </div>
 </div>
-<app-fun-fact></app-fun-fact>
   `
 })
 export class FlowerListComponent {
