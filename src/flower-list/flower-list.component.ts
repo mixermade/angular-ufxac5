@@ -103,7 +103,11 @@ class Flower{
     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
       <div class="accordion-body">
       <ul *ngFor="let flower of flowers">
-      <li *ngIf="flower.favourite">{{flower.name}} | {{flower.latname}} | {{flower.formula}} | Poisonous?: {{flower.poison}}</li>
+      <li *ngIf="flower.favourite">{{flower.name}} | {{flower.latname}} | {{flower.formula}} | Poisonous?: {{flower.poison}}
+      <button style="margin-left:10px" type="button" class="btn btn-dark" (click)="removeFavs(flower)">
+      Remove
+    </button>
+      </li>
       </ul>
       </div>
     </div>
@@ -138,7 +142,10 @@ export class FlowerListComponent {
        }
     }
 }
-  addToFavs(flower){
+  addToFavs(flower: Flower){
     flower.favourite = true;
+  }
+  removeFavs(flower: Flower){
+    flower.favourite = false;
   }
 }
