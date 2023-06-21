@@ -106,7 +106,7 @@ class Flower{
       <li *ngIf="flower.favourite">{{flower.name}} | {{flower.latname}} | {{flower.formula}} | Poisonous?: {{flower.poison}}
       <button style="margin-left:10px" type="button" class="btn btn-dark" (click)="removeFavs(flower)">
       Remove
-    </button>
+      </button>
       </li>
       </ul>
       </div>
@@ -121,9 +121,7 @@ export class FlowerListComponent {
   latname: string = "";
   formula: string = "";
   poison: string = "";
-  flowers: Flower[] = 
-  [
-  ];
+  flowers: Flower[] = [{name:"Snake's head",latname:"Fritillaria meleagris",formula:"✶ P3+3 A3+3 G(3)",poison:"Yes"},{name:"Narcissus",latname:"Narcissus",formula:"Br ✶ ☿ P3+3+Corolla A3+3 G(3)",poison:"Yes"},{name:"Indian shot",latname:"Canna indica",formula:"↯ K3 [C3 A1°–3°+½:2°] Ğ(3)",poison:"No"}];
   addFlower(name: string, latname: string, formula: string, poison: string): void {     
       if(name && latname && formula && poison){
         this.flowers.push(new Flower(name, latname, formula, poison));
